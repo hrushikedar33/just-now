@@ -1,5 +1,6 @@
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justnow/models/ChatModel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +42,7 @@ class _IndividualPageState extends State<IndividualPage> {
   }
 
   void connect() {
-    _socket = IO.io("http://192.168.0.103:5000", <String, dynamic>{
+    _socket = IO.io(dotenv.env['user_ip'], <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
